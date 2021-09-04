@@ -1,0 +1,16 @@
+h4 id="indiv-post-header">{{postData.title}}</h4>
+<p>{{postData.content}}</p>
+<p id="postId">{{postId}}</p>
+<p id="postId-url">{{urlId}}</p>
+
+<div class="comment-container">
+{{#each commentData as |comment|}}
+        <p class="comment-content">{{content}}</p>
+{{/each}}
+</div>
+
+<form id="comment-message">
+<input type="text" id="comment-text" name="text"><br>
+<input type="submit" id="send-comment-btn" name="send-msg-btn">
+</form>
+<script src ="../public/js/comment.js"></script>
