@@ -1,0 +1,10 @@
+<h1>Welcome to The Tech Blog</h1>
+{{#each postData as |newPost|}}
+<div class='postContainer'>
+    <h4>{{title}}</h4>
+    <h1>{{date}}</h1>
+
+    <a href='/post/{{id}}'>View Posts</a>
+</div>
+
+{{/each}}
