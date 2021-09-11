@@ -1,12 +1,104 @@
-{{#if loggedIn}}
-{{#each postData as |post|}}
-<div class="post-container">
-    <h4>{{title}}</h4>
-    <p>{{content}}</p>
-    <p>{{date}}</p>
+<div class="container-fluid dashboard-container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 account-full-container">
+      <div class="account-container">
+        <div class="account-information">
+            {{#each userData as |userData|}}
+                {{#if image_link}}
+                    <img id="account-information-profile-image" src={{image_link}} alt="user profile picture">
+                {{/if}}
+                {{!-- {{#if !image_link}}
+                    <img id="account-information-profile-image" src="../img/person.jpg" alt="stand-in profile picture">
+                {{/if}} --}}
+                <p>Username: {{username}}</p>
+                <p id="account-email">Email: {{email}}</p>
+                <p>{{location.city}}</p>
+                <p>{{location.state}}</p>
+                {{/each}}
+                </div>
+            </div>
+        </div>
+        <div class = "row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="button-container">
+                    <div class="modal fade" id="request-modal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalToggleLabel">Comment</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                 <form id="make-request-form">
+                                    <label for="title">Title</label><br>
+                                    <input type="text" id="title" name="title"><br>
+                                    <label for="text">Post Blog:</label><br>
+                                    <input type="text" id="text" name="text"><br>
+                                    <input type="text" id="image-link" name="image-link"><br>
+                                    <select id="drop-down" class="custom-select mr-sm-2" >
+                                     </select>
+                                    <input type="submit" id="submit-request-btn" name="submit-request-btn">
+                                </form>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a id="make-request-btn" class="btn btn-primary" data-bs-toggle="modal" href="#request-modal" role="button">Make Request</a>
+                      <div class="modal fade" id="request-modal-2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                            </div>
+                            <div class="modal-body">
+                                 <form id="search-request-form">
+                                    <select id="drop-down-2" class="custom-select mr-sm-2" >
+                                     </select>
+                                    <input type="submit" id="submit-search-btn" name="submit-search-btn">
+                                </form>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a id="search-request-btn" class="btn btn-primary" data-bs-toggle="modal" href="#request-modal-2" role="button">Search Request</a>
+                </div>
+            </div>
+        </div>
+        <div class = "row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                {{#if dashboardRequests}}
+                <h3 id="your-request-header">Your Request</h3>
+                <div class="request-container">
+                    {{#each dashboardRequests as |dashboardRequest|}}
+                        <div class="your-requests">
+                        <h4>{{title}}</h4>
+                        <a href="api/request/{{id}}">View Request</a>
+                        </div>
+                    {{/each}}
+                </div>
+                {{/if}}
+            </div>
+        </div>
+        <div class = "row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 saved-full-container">
+               {{#if savedDashboardRequests}}
+                <h3 id="saved-header">Saved Request</h3>
+                <div class="saved-container">
+                        {{#each savedDashboardRequests}}
+                            <div class="saved-requests">
+                                <div class="saved-header-new">
+                                    <h4 id="saved-header-4">{{request.title}}</h4>
+                                </div>
+                                <div class="saved-buttons">
+                                    <a href="api/request/{{request.id}}">View Request</a>
+                                    <button data-id="{{id}}" class="unsave-req-btn">Unsave Request</button>
+                                </div>
+                            </div>
+                        {{/each}}
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>  
 </div>
-{{/each}}
-<div class="d-flex justify-content-center">
-    <a id="post-button" class="link" href="/new">New Post</a>
-</div>
-{{/if}}
+
+<script src="/js/dashboard.js"></script>

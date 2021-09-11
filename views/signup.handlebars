@@ -1,10 +1,24 @@
-<div class="d-flex justify-content-center">
-<form id="signup-form">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username">
-    <label for="password">Password:</label>
-    <input type="text" id="password" name="password">
-    <input type="submit" id="signup-submit" name="signin-submit">
-</form>
+<div class="container-fluid signup-container">
+    <div class="row">
+        <h2 id="signup-header">Sign Up</h2>
+        <form id="signup-form">
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username"><br>
+            <label for="email">Email:</label><br>
+            <input type="text" id="email" name="email"><br>
+            <label for="password">Password:</label><br>
+            <input type="text" id="password" name="password"><br>
+            <label for="image_link">Profile Picture URL:</label><br>
+            <input type="text" id="image_link" name="image_link"><br>
+            <div class="col-auto my-1">
+            <label class="mr-sm-2" for="inlineFormCustomSelect">Preference</label>
+            <select id="drop-down" class="custom-select mr-sm-2" >
+
+            </select>
+            </div>
+            <input type="submit" id="signup-submit" name="signup-submit">
+        </form>
+    </div>
 </div>
-<script defer src="../public/js/signup.js"></script>
+
+<script src="/js/signup.js"></script>
